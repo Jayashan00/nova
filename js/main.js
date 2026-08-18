@@ -30,9 +30,7 @@
 
   function openMenu() {
     menu.hidden = false;
-    // Force a reflow so the browser has a "closed" frame to animate from,
-    // otherwise removing [hidden] and adding the class in the same tick
-    // skips the transition entirely.
+
     void menu.offsetHeight;
     menu.classList.add("is-open");
     burger.classList.add("is-open");
@@ -48,7 +46,7 @@
     burger.setAttribute("aria-label", "Open menu");
     document.body.classList.remove("is-locked");
 
-    // Re-hide only after the fade-out finishes
+
     const done = () => { menu.hidden = true; };
     if (prefersReducedMotion) done();
     else setTimeout(done, 280);
@@ -58,7 +56,7 @@
     burger.classList.contains("is-open") ? closeMenu() : openMenu();
   });
 
-  // Any link tap closes the menu so the anchor scroll is visible
+
   menu.querySelectorAll("a").forEach(function (link) {
     link.addEventListener("click", closeMenu);
   });
@@ -70,15 +68,14 @@
     }
   });
 
-  // Tapping outside the panel dismisses it
+
   document.addEventListener("click", function (e) {
     if (!burger.classList.contains("is-open")) return;
     if (menu.contains(e.target) || burger.contains(e.target)) return;
     closeMenu();
   });
 
-  // If the viewport grows past the mobile breakpoint while open,
-  // the desktop nav takes over and the panel must be dismissed.
+
   window.matchMedia("(min-width: 861px)").addEventListener("change", function (e) {
     if (e.matches && burger.classList.contains("is-open")) closeMenu();
   });
@@ -89,7 +86,7 @@
      --------------------------------------------------------- */
   const revealEls = document.querySelectorAll(".reveal");
 
-  // Push each element's stagger value into a CSS custom property
+
   revealEls.forEach(function (el) {
     const delay = el.dataset.revealDelay;
     if (delay) el.style.setProperty("--reveal-delay", delay + "ms");
@@ -103,15 +100,14 @@
         revealObserver.unobserve(entry.target);
       });
     }, {
-      // Fires a little before the element reaches the viewport edge,
-      // so content is already settled by the time it's fully in view.
+
       rootMargin: "0px 0px -12% 0px",
       threshold: 0.05
     });
 
     revealEls.forEach(function (el) { revealObserver.observe(el); });
   } else {
-    // No observer support (or reduced motion): show everything immediately
+
     revealEls.forEach(function (el) { el.classList.add("is-visible"); });
   }
 
@@ -127,7 +123,7 @@
       const chartObserver = new IntersectionObserver(function (entries, obs) {
         entries.forEach(function (entry) {
           if (!entry.isIntersecting) return;
-          // Slight delay so the bars land after the mockup itself fades in
+
           setTimeout(function () { chart.classList.add("is-playing"); }, 220);
           obs.disconnect();
         });
@@ -159,7 +155,7 @@
     btn.addEventListener("click", function () {
       const isOpen = item.classList.contains("is-open");
 
-      // Single-open accordion: collapse siblings first
+
       faqItems.forEach(function (other) {
         if (other !== item) closeItem(other);
       });
@@ -173,7 +169,7 @@
       }
     });
 
-    // Keep the open panel correctly sized when text re-wraps on resize
+
     window.addEventListener("resize", function () {
       if (item.classList.contains("is-open")) {
         panel.style.maxHeight = panel.scrollHeight + "px";
@@ -207,5 +203,5 @@
     });
   }, { passive: true });
 
-  onScroll(); // set the correct state on load (e.g. refresh mid-page)
+  onScroll();
 })();

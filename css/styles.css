@@ -52,7 +52,7 @@
     --color-shadow: rgba(0, 0, 0, 0.6);
     --color-shadow-light: rgba(0, 0, 0, 0.4);
 
-    /* Nav glass — kept low-alpha so the ambient blobs tint the pill */
+
     --nav-glass: linear-gradient(100deg,
         rgba(18, 16, 28, 0.55) 0%,
         rgba(32, 28, 48, 0.42) 55%,
@@ -62,15 +62,15 @@
         rgba(34, 30, 52, 0.60) 55%,
         rgba(44, 38, 66, 0.52) 100%);
 
-    /* Accent used only for the logo full-stop */
+
     --color-logo-dot: var(--color-purple);
-    /* Shared fill for the "active" purple button state */
+
     --grad-purple: linear-gradient(135deg, #a78bfa 0%, var(--color-purple) 55%, #7c3aed 100%);
 
-    /* Typography */
+
     --font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 
-    /* Spacing / rhythm */
+
     --container: 1200px;
     --gutter: 24px;
     --section-y: 120px;
@@ -79,7 +79,7 @@
     --radius-lg: 24px;
     --radius-pill: 999px;
 
-    /* Motion — one shared easing keeps every transition feeling related */
+
     --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
     --dur: 0.35s;
 }
@@ -93,7 +93,7 @@
 
 html {
     scroll-behavior: smooth;
-    /* Anchored sections stop below the floating nav instead of under it */
+
     scroll-padding-top: 110px;
     -webkit-text-size-adjust: 100%;
 }
@@ -109,7 +109,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Locks scrolling while the mobile menu is open */
+
 body.is-locked { overflow: hidden; }
 
 img { max-width: 100%; display: block; }
@@ -139,7 +139,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 .skip-link:focus { top: 14px; }
 
-/* ---------- AMBIENT BACKGROUND ---------- */
+
 .ambient {
     position: fixed;
     inset: 0;
@@ -154,7 +154,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     height: 620px;
     border-radius: 50%;
     filter: blur(120px);
-    /* Very slow drift keeps the background alive without being distracting */
+
     animation: drift 22s ease-in-out infinite alternate;
 }
 .ambient__blob--purple {
@@ -185,12 +185,11 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .section { padding-block: var(--section-y); }
 
-/* Hairline divider that fades out at both ends */
+
 .rule {
     border: 0;
     height: 1px;
-    /* Near-solid white hairline; only the last 2% tapers so the ends
-       don't terminate abruptly against the background */
+
     background: linear-gradient(90deg,
         rgba(255, 255, 255, 0.15),
         rgba(255, 255, 255, 0.88) 2%,
@@ -243,9 +242,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     background: var(--color-white);
     color: var(--color-black);
 }
-/* Primary buttons flip from white to the brand purple on hover, with a
-   soft bloom underneath. Background-image can't be transitioned, so the
-   gradient is layered over a solid purple that carries the colour change. */
+
 .btn--light:hover {
     background-color: var(--color-purple);
     background-image: var(--grad-purple);
@@ -264,7 +261,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     background: rgba(139, 92, 246, 0.12);
     border-color: var(--color-purple-border);
     transform: translateY(-2px);
-    /* Tight inner ring plus a wide bloom, so it reads as lit rather than filled */
+
     box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.16),
                 0 10px 34px rgba(139, 92, 246, 0.45);
 }
@@ -286,7 +283,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .btn--sm { padding: 11px 20px; font-size: 0.82rem; }
 .btn--block { display: flex; width: 100%; }
 
-/* Arrow inside buttons/links nudges right on hover */
+
 .btn span[aria-hidden],
 .link-arrow span {
     transition: transform var(--dur) var(--ease);
@@ -336,20 +333,15 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     width: 100%;
     max-width: 1100px;
     height: 68px;
-    /* 1fr | auto | 1fr keeps the link group optically centred regardless of
-       how wide the logo or the CTA button happen to be */
+
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
     gap: 24px;
     padding: 0 12px 0 26px;
-    /* A soft rounded rect rather than a full pill — at this width a 999px
-       radius reads as a lozenge, which fights the panels below it */
+
     border-radius: var(--radius-lg);
-    /* Translucent tinted glass rather than near-solid black: the low alpha
-       lets the ambient purple/cyan blobs and the section underneath show
-       through, and saturate() pushes that colour back up after the blur
-       averages it out. */
+
     background: var(--nav-glass);
     border: 1px solid var(--color-border-glass);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
@@ -359,8 +351,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
                 border-color var(--dur) var(--ease),
                 box-shadow var(--dur) var(--ease);
 }
-/* Once scrolled, the pill deepens and gains a shadow so it separates
-   from the content passing underneath it — still translucent, just denser */
+
 .nav.is-scrolled .nav__inner {
     background: var(--nav-glass-scrolled);
     border-color: rgba(255, 255, 255, 0.16);
@@ -409,7 +400,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     border-radius: 2px;
     transition: transform 0.3s var(--ease), opacity 0.2s var(--ease);
 }
-/* Burger → X */
+
 .nav__burger.is-open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
 .nav__burger.is-open span:nth-child(2) { opacity: 0; }
 .nav__burger.is-open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
@@ -422,7 +413,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     z-index: 99;
     padding: 20px;
     border-radius: var(--radius);
-    /* Matches the nav pill, a touch denser so the links stay legible */
+
     background: linear-gradient(160deg,
         rgba(18, 16, 28, 0.86),
         rgba(34, 30, 52, 0.78));
@@ -430,8 +421,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     backdrop-filter: blur(24px) saturate(180%);
     -webkit-backdrop-filter: blur(24px) saturate(180%);
     box-shadow: 0 24px 60px var(--color-shadow);
-    /* Animated open state; `hidden` is removed by JS one frame earlier
-       so the transition has a starting point to run from. */
+
     opacity: 0;
     transform: translateY(-12px);
     pointer-events: none;
@@ -473,14 +463,10 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 .hero__gradient {
     display: block;
-    /* fit-content shrinks the span to the glyphs, so the 0% and 100% stops
-       land on the first and last letter instead of out in the empty space
-       either side of the centred line. */
+
     width: fit-content;
     margin-inline: auto;
-    /* Even progression across the full phrase: violet on "10", blue
-       through "x fa", cyan landing on the final letters. No flat holds
-       at either end — the shift stays visible the whole way across. */
+
     background: linear-gradient(95deg,
         #8b5cf6 0%,
         #6d6ef4 22%,
@@ -508,14 +494,14 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     margin-top: 34px;
 }
 
-/* ---- Product mockup ---- */
+
 .mock {
     position: relative;
     max-width: 1000px;
     margin: 80px auto 0;
 }
 .mock__glow {
-    /* Soft light pooled under the window so it lifts off the page */
+
     position: absolute;
     inset: 12% 8% -8%;
     background: radial-gradient(ellipse at center, var(--color-purple-soft), transparent 70%);
@@ -562,11 +548,11 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     gap: 18px;
     padding-top: 12px;
     padding-right: 26px;
-    /* Vertical rail separating the nav column from the analytics panel */
+
     border-right: 1px solid var(--color-bg-line-dark);
 }
 
-/* Grey placeholder lines used in both mockups */
+
 .skeleton {
     display: block;
     height: 9px;
@@ -584,7 +570,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    /* Overrides the centred text inherited from .hero__inner */
+
     text-align: left;
 }
 .mock__label {
@@ -600,26 +586,26 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     gap: 16px;
     height: 200px;
     max-width: 310px;
-    /* Bars sit above the panel floor rather than flush against it */
+
     margin-top: auto;
     margin-bottom: 26px;
 }
 .chart__bar {
     width: 42px;
-    height: 0;                      /* grows to var(--h) when .is-playing lands */
+    height: 0;
     border-radius: 9px 9px 6px 6px;
     background: linear-gradient(180deg, var(--color-purple), var(--color-cyan));
     transition: height 0.9s var(--ease);
 }
 .chart.is-playing .chart__bar { height: var(--h); }
-/* Staggered so the bars rise one after another */
+
 .chart.is-playing .chart__bar:nth-child(1) { transition-delay: 0.00s; }
 .chart.is-playing .chart__bar:nth-child(2) { transition-delay: 0.09s; }
 .chart.is-playing .chart__bar:nth-child(3) { transition-delay: 0.18s; }
 .chart.is-playing .chart__bar:nth-child(4) { transition-delay: 0.27s; }
 .chart.is-playing .chart__bar:nth-child(5) { transition-delay: 0.36s; }
 
-/* ---- Trust row ---- */
+
 .trust__label {
     margin-top: 90px;
     text-align: center;
@@ -661,7 +647,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
                 border-color var(--dur) var(--ease),
                 background-color var(--dur) var(--ease);
 }
-/* Subtle purple wash that fades in from the top-left on hover */
+
 .card::before {
     content: "";
     position: absolute;
@@ -693,7 +679,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     transition: transform var(--dur) var(--ease);
 }
 .card:hover .card__icon { transform: scale(1.07) rotate(-4deg); }
-/* Each icon tile carries a faint tint of its own hue */
+
 .card__icon--amber  { background: rgba(251, 191, 36, 0.10); }
 .card__icon--orange { background: rgba(249, 115, 22, 0.10); }
 .card__icon--blue   { background: rgba(59, 130, 246, 0.10); }
@@ -718,8 +704,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     margin-inline: auto;
     padding-left: 74px;
 }
-/* Vertical rail linking the numbered markers; it fades out at the bottom
-   so the sequence reads as continuing rather than stopping hard. */
+
 .steps::before {
     content: "";
     position: absolute;
@@ -798,7 +783,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     max-width: 400px;
     padding: 20px 22px;
     border-radius: var(--radius-sm);
-    /* Purple → cyan wash matching the AI-assistant card in the reference */
+
     background: linear-gradient(120deg, rgba(139, 92, 246, 0.14), var(--color-cyan-soft));
     border: 1px solid rgba(139, 92, 246, 0.28);
 }
@@ -881,7 +866,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     box-shadow: 0 18px 46px rgba(139, 92, 246, 0.14);
 }
 
-/* Featured tier sits slightly proud of the others on desktop */
+
 .plan--featured {
     background: linear-gradient(160deg, rgba(139, 92, 246, 0.20), rgba(139, 92, 246, 0.04) 55%, var(--color-bg-card));
     border-color: var(--color-purple-border);
@@ -937,7 +922,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     font-size: 0.82rem;
     color: var(--color-text-light);
 }
-/* Checkmarks are decorative, so they live in CSS rather than the markup */
+
 .plan__list li::before {
     content: "✓";
     position: absolute;
@@ -965,11 +950,10 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     transition: color var(--dur) var(--ease);
 }
 .faq__q:hover { color: var(--color-white); }
-/* Open question turns solid violet; the plus sign turns cyan */
+
 .faq__q[aria-expanded="true"] span:first-child { color: var(--color-purple); }
 
-/* Plus sign built from two pseudo-element bars; the vertical one
-   collapses on open, turning the "+" into a "−" */
+
 .faq__icon {
     position: relative;
     width: 17px;
@@ -988,8 +972,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 .faq__icon::before { width: 16px; height: 1.5px; }
 .faq__icon::after  { width: 1.5px; height: 16px; }
-/* Hovering (or focusing) the row lights the plus cyan, before it's opened.
-   :focus-visible is paired in so keyboard users get the same signal. */
+
 .faq__q:hover .faq__icon::before,
 .faq__q:hover .faq__icon::after,
 .faq__q:focus-visible .faq__icon::before,
@@ -999,7 +982,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .faq__q[aria-expanded="true"] .faq__icon::before { background: var(--color-cyan); }
 
 .faq__a {
-    max-height: 0;                 /* real pixel value assigned in JS */
+    max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s var(--ease), opacity 0.3s var(--ease);
     opacity: 0;
@@ -1013,7 +996,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     max-width: 620px;
 }
 
-/* ---------- 12. CTA ---------- */
+
 .cta-section { padding-block: 40px 110px; }
 
 .cta {
@@ -1022,12 +1005,11 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     text-align: center;
     padding: 74px 32px;
     border-radius: var(--radius-lg);
-    /* Deeper and less saturated than before: the panel should sit back as a
-       dark surface the white type reads off, not glow on its own. */
+
     background: linear-gradient(115deg, #241a42 0%, #191a33 48%, #0e2b33 100%);
     border: 1px solid rgba(139, 92, 246, 0.20);
 }
-/* Slow-moving highlight sweep across the panel */
+
 .cta::after {
     content: "";
     position: absolute;
@@ -1098,7 +1080,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     color: var(--color-text-darkest);
 }
 
-/* ---------- BACK TO TOP ---------- */
+
 .to-top {
     position: fixed;
     right: 26px;
@@ -1123,7 +1105,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     transform: none;
     pointer-events: auto;
 }
-/* :focus-visible included so keyboard users get the same purple state */
+
 .to-top:hover,
 .to-top:focus-visible {
     background: var(--color-purple);
@@ -1137,7 +1119,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     opacity: 0;
     transform: translateY(22px);
     transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
-    /* --reveal-delay is written by JS from the data attribute */
+
     transition-delay: var(--reveal-delay, 0ms);
     will-change: opacity, transform;
 }
@@ -1148,7 +1130,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 /* ---------- 15. RESPONSIVE ---------- */
 
-/* Tablet landscape and below */
+
 @media (max-width: 1024px) {
     :root { --section-y: 96px; }
 
@@ -1157,13 +1139,13 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     .footer__cols { gap: 40px; }
 }
 
-/* Tablet portrait: nav collapses, grids drop to a single column */
+
 @media (max-width: 860px) {
     .nav__links,
     .nav__cta { display: none; }
     .nav__burger { display: flex; justify-self: end; }
     .nav__inner {
-        grid-template-columns: 1fr auto;   /* logo | burger */
+        grid-template-columns: 1fr auto;
         padding-right: 8px;
         height: 54px;
     }
@@ -1172,7 +1154,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
     .mock { margin-top: 56px; }
     .mock__body {
-        grid-template-columns: 1fr;   /* sidebar stacks above the chart */
+        grid-template-columns: 1fr;
         min-height: 0;
         gap: 20px;
         padding: 20px;
@@ -1183,7 +1165,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
         gap: 10px;
         padding-right: 0;
         padding-bottom: 18px;
-        /* Rail flips from vertical to horizontal when the columns stack */
+
         border-right: 0;
         border-bottom: 1px solid var(--color-bg-line-dark);
     }
@@ -1195,7 +1177,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     .cards,
     .plans { grid-template-columns: 1fr; }
 
-    /* Featured plan sits inline with the rest once stacked */
+
     .plan--featured { transform: none; }
     .plan--featured:hover { transform: translateY(-5px); }
 
@@ -1206,7 +1188,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     .footer__inner { flex-direction: column; gap: 40px; }
 }
 
-/* Phones */
+
 @media (max-width: 560px) {
     :root { --gutter: 18px; --section-y: 76px; }
 
@@ -1233,7 +1215,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     .faq__q { font-size: 0.9rem; padding-block: 20px; }
 }
 
-/* Very small phones — keep the headline from wrapping awkwardly */
+
 @media (max-width: 380px) {
     .hero__title { font-size: 2.35rem; }
     .plan__price { font-size: 2.1rem; }
@@ -1249,7 +1231,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
         animation-iteration-count: 1 !important;
         transition-duration: 0.001ms !important;
     }
-    /* Content must still be visible if reveal transitions are disabled */
+
     .reveal { opacity: 1; transform: none; }
     .chart__bar { height: var(--h); }
 }
