@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#050505" />
+  <title>Nova — AI workspace for modern teams</title>
+  <meta name="description" content="Design, prototype and deploy AI-powered applications with a workspace built for modern teams." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<!-- Skip link: keyboard users can jump past the fixed nav -->
+<a class="skip-link" href="#hero">Skip to content</a>
+
+<!-- ============ AMBIENT BACKGROUND GLOWS ============
+     Two fixed, blurred radial blobs sit behind everything and give the page
+     its purple/cyan atmosphere. They're `position: fixed` so they stay put
+     while the content scrolls over them, which matches the reference. -->
+<div class="ambient" aria-hidden="true">
+  <span class="ambient__blob ambient__blob--purple"></span>
+  <span class="ambient__blob ambient__blob--cyan"></span>
+</div>
+
+<!-- ============ NAVIGATION ============ -->
+<header class="nav" id="nav">
+  <nav class="nav__inner" aria-label="Primary">
+    <a class="nav__logo" href="#hero">Nova<span>.</span></a>
+
+    <ul class="nav__links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#workflow">Workflow</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+
+    <a href="#pricing" class="btn btn--light btn--sm nav__cta">Get Started</a>
+
+    <!-- Hamburger — animates into an X when the panel opens -->
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<!-- Mobile slide-down menu (separate from the pill so it can size freely) -->
+<div class="mobile-menu" id="mobileMenu" hidden>
+  <ul>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#workflow">Workflow</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <a href="#pricing" class="btn btn--light btn--block">Get Started</a>
+</div>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="hero">
+    <div class="container hero__inner">
+
+      <span class="badge reveal" data-reveal-delay="0">
+        <span class="badge__spark" aria-hidden="true">✨</span>
+        AI Workspace Platform
+      </span>
+
+      <h1 class="hero__title reveal" data-reveal-delay="60">
+        Build products
+        <span class="hero__gradient">10x faster</span>
+      </h1>
+
+      <p class="hero__sub reveal" data-reveal-delay="120">
+        Design, prototype and deploy AI-powered applications with a
+        workspace built for modern teams.
+      </p>
+
+      <div class="hero__actions reveal" data-reveal-delay="180">
+        <a href="#pricing" class="btn btn--light">Start Free</a>
+        <a href="#workflow" class="btn btn--glass">Book Demo</a>
+      </div>
+
+      <!-- ---- Product mockup ----
+           A fake app window. The bars animate their height in when the
+           window first scrolls into view (see js/main.js). -->
+      <div class="mock reveal" data-reveal-delay="240">
+        <div class="mock__glow" aria-hidden="true"></div>
+        <div class="mock__window">
+          <div class="mock__bar">
+            <span class="mock__dot"></span>
+            <span class="mock__dot"></span>
+            <span class="mock__dot"></span>
+          </div>
+
+          <div class="mock__body">
+            <aside class="mock__side" aria-hidden="true">
+              <span class="skeleton skeleton--w95"></span>
+              <span class="skeleton skeleton--w95"></span>
+              <span class="skeleton skeleton--w95"></span>
+              <span class="skeleton skeleton--w95"></span>
+            </aside>
+
+            <div class="mock__panel">
+              <p class="mock__label">AI Analytics</p>
+              <div class="chart" id="chart" aria-hidden="true">
+                <!-- --h is the final height; JS releases the animation -->
+                <span class="chart__bar" style="--h:34%"></span>
+                <span class="chart__bar" style="--h:60%"></span>
+                <span class="chart__bar" style="--h:100%"></span>
+                <span class="chart__bar" style="--h:52%"></span>
+                <span class="chart__bar" style="--h:82%"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ---- Social proof ---- -->
+      <p class="trust__label reveal">Trusted by teams building the future</p>
+      <ul class="trust__logos reveal">
+        <li>OpenAI</li>
+        <li>Notion</li>
+        <li>Linear</li>
+        <li>Stripe</li>
+        <li>Vercel</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="container"><hr class="rule" /></div>
+
+  <!-- ============ FEATURES ============ -->
+  <section class="section" id="features">
+    <div class="container">
+      <header class="section__head">
+        <span class="badge badge--plain reveal">Powerful Features</span>
+        <h2 class="section__title reveal" data-reveal-delay="60">
+          Everything you need<br />to ship faster
+        </h2>
+        <p class="section__sub reveal" data-reveal-delay="120">
+          A complete AI workspace designed for teams that move quickly.
+        </p>
+      </header>
+
+      <div class="cards">
+        <article class="card reveal" data-reveal-delay="0">
+          <div class="card__icon card__icon--amber">⚡</div>
+          <h3 class="card__title">Lightning Fast</h3>
+          <p class="card__text">Build, test and deploy applications without unnecessary complexity.</p>
+          <a href="#workflow" class="link-arrow">Learn more <span aria-hidden="true">→</span></a>
+        </article>
+
+        <article class="card reveal" data-reveal-delay="80">
+          <div class="card__icon card__icon--orange">🔒</div>
+          <h3 class="card__title">Enterprise Security</h3>
+          <p class="card__text">Your data stays protected with modern security standards.</p>
+          <a href="#pricing" class="link-arrow">Learn more <span aria-hidden="true">→</span></a>
+        </article>
+
+        <article class="card reveal" data-reveal-delay="160">
+          <div class="card__icon card__icon--blue">📈</div>
+          <h3 class="card__title">Smart Analytics</h3>
+          <p class="card__text">Understand your product with powerful real-time insights.</p>
+          <a href="#pricing" class="link-arrow">Learn more <span aria-hidden="true">→</span></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><hr class="rule" /></div>
+
+  <!-- ============ WORKFLOW ============ -->
+  <section class="section" id="workflow">
+    <div class="container">
+      <header class="section__head">
+        <span class="badge badge--plain reveal">Simple Workflow</span>
+        <h2 class="section__title reveal" data-reveal-delay="60">
+          From idea to launch<br />in three steps
+        </h2>
+        <p class="section__sub reveal" data-reveal-delay="120">
+          Everything your team needs to transform concepts into production-ready products.
+        </p>
+      </header>
+
+      <!-- Numbered steps: the order is meaningful here (it's a real sequence),
+           so the 01/02/03 markers and the connecting rail carry information. -->
+      <ol class="steps">
+        <li class="step reveal">
+          <span class="step__num">01</span>
+          <div class="step__content">
+            <h3 class="step__title">Create your workspace</h3>
+            <p class="step__text">Start a project, invite your team, and organize everything in one place.</p>
+
+            <div class="step__visual">
+              <div class="mini-window">
+                <div class="mini-window__bar">
+                  <span></span><span></span><span></span>
+                </div>
+                <div class="mini-window__body" aria-hidden="true">
+                  <span class="skeleton skeleton--w95"></span>
+                  <span class="skeleton skeleton--w80"></span>
+                  <span class="skeleton skeleton--w55"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="step reveal">
+          <span class="step__num">02</span>
+          <div class="step__content">
+            <h3 class="step__title">Build with AI assistance</h3>
+            <p class="step__text">Generate ideas, automate tasks, and accelerate development.</p>
+
+            <div class="step__visual">
+              <div class="assistant">
+                <p class="assistant__label">AI Assistant</p>
+                <!-- Typewriter caret is purely decorative -->
+                <p class="assistant__prompt">"Generate a dashboard UI"<span class="caret" aria-hidden="true"></span></p>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="step reveal">
+          <span class="step__num">03</span>
+          <div class="step__content">
+            <h3 class="step__title">Deploy instantly</h3>
+            <p class="step__text">Push your application live with one simple click.</p>
+
+            <div class="step__visual">
+              <a href="#pricing" class="btn btn--light btn--sm">Deploy Project <span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ TESTIMONIALS ============ -->
+  <section class="section" id="stories">
+    <div class="container">
+      <header class="section__head">
+        <span class="badge badge--plain reveal">Customer Stories</span>
+        <h2 class="section__title reveal" data-reveal-delay="60">
+          Loved by teams<br />around the world
+        </h2>
+      </header>
+
+      <div class="cards">
+        <article class="card quote reveal" data-reveal-delay="0">
+          <p class="quote__text">"Nova completely changed how our team builds and ships products. Everything feels faster."</p>
+          <div class="person">
+            <span class="person__avatar">JD</span>
+            <span class="person__meta">
+              <strong>James Davis</strong>
+              <em>Product Designer</em>
+            </span>
+          </div>
+        </article>
+
+        <article class="card quote reveal" data-reveal-delay="80">
+          <p class="quote__text">"The attention to detail is incredible. Our developers saved weeks of work."</p>
+          <div class="person">
+            <span class="person__avatar">SK</span>
+            <span class="person__meta">
+              <strong>Sarah Kim</strong>
+              <em>Engineering Lead</em>
+            </span>
+          </div>
+        </article>
+
+        <article class="card quote reveal" data-reveal-delay="160">
+          <p class="quote__text">"A beautiful platform that our entire company actually enjoys using."</p>
+          <div class="person">
+            <span class="person__avatar">MR</span>
+            <span class="person__meta">
+              <strong>Michael Ross</strong>
+              <em>Founder</em>
+            </span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><hr class="rule" /></div>
+
+  <!-- ============ PRICING ============ -->
+  <section class="section" id="pricing">
+    <div class="container">
+      <header class="section__head">
+        <span class="badge badge--plain reveal">Pricing</span>
+        <h2 class="section__title reveal" data-reveal-delay="60">
+          Simple pricing.<br />No surprises.
+        </h2>
+      </header>
+
+      <div class="plans">
+        <article class="plan reveal" data-reveal-delay="0">
+          <h3 class="plan__name">Starter</h3>
+          <p class="plan__price">$19 <span>/month</span></p>
+          <p class="plan__note">For individuals getting started.</p>
+          <ul class="plan__list">
+            <li>5 Projects</li>
+            <li>Basic Analytics</li>
+            <li>Community Support</li>
+          </ul>
+          <a href="#" class="btn btn--light btn--block">Start Free</a>
+        </article>
+
+        <!-- Featured plan: purple gradient wash + ribbon -->
+        <article class="plan plan--featured reveal" data-reveal-delay="80">
+          <span class="plan__ribbon">Most Popular</span>
+          <h3 class="plan__name">Professional</h3>
+          <p class="plan__price">$49 <span>/month</span></p>
+          <p class="plan__note">For growing teams.</p>
+          <ul class="plan__list">
+            <li>Unlimited Projects</li>
+            <li>Advanced Analytics</li>
+            <li>Priority Support</li>
+          </ul>
+          <a href="#" class="btn btn--light btn--block">Start Free</a>
+        </article>
+
+        <article class="plan reveal" data-reveal-delay="160">
+          <h3 class="plan__name">Enterprise</h3>
+          <p class="plan__price plan__price--word">Custom</p>
+          <p class="plan__note">For large organizations.</p>
+          <ul class="plan__list">
+            <li>Dedicated Support</li>
+            <li>Security Controls</li>
+            <li>Custom Solutions</li>
+          </ul>
+          <a href="#" class="btn btn--outline btn--block">Contact Sales</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><hr class="rule" /></div>
+
+  <!-- ============ FAQ ============ -->
+  <section class="section" id="faq">
+    <div class="container container--narrow">
+      <header class="section__head">
+        <span class="badge badge--plain reveal">FAQ</span>
+        <h2 class="section__title reveal" data-reveal-delay="60">
+          Frequently asked<br />questions
+        </h2>
+      </header>
+
+      <!-- Accordion. Buttons drive it so it's keyboard operable;
+           panel height is animated via max-height set in JS. -->
+      <div class="faq" id="faqList">
+        <div class="faq__item reveal">
+          <button class="faq__q" aria-expanded="false">
+            <span>What is Nova?</span>
+            <span class="faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq__a"><p>Nova is an AI workspace platform that helps teams design.build and deploy product faster.</p></div>
+        </div>
+
+        <div class="faq__item reveal">
+          <button class="faq__q" aria-expanded="false">
+            <span>Can I use it with my team?</span>
+            <span class="faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq__a"><p>Yes.Nova is designed for individuals.startups and enterprise teams. </p></div>
+        </div>
+
+        <div class="faq__item reveal">
+          <button class="faq__q" aria-expanded="false">
+            <span>Is there a free plan?</span>
+            <span class="faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq__a"><p>Yes.You can start with our free plan and upgrade whenever you need.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta reveal">
+        <h2 class="cta__title">Ready to build something amazing?</h2>
+        <p class="cta__text">Join thousands of teams creating the future with Nova.</p>
+        <a href="#pricing" class="btn btn--light">Start Building <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <a class="nav__logo" href="#hero">Nova<span>.</span></a>
+      <p>AI workspace for modern teams.</p>
+    </div>
+
+    <nav class="footer__cols" aria-label="Footer">
+      <div class="footer__col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#workflow">Updates</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#stories">About</a></li>
+          <li><a href="#stories">Careers</a></li>
+          <li><a href="#faq">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#faq">Privacy</a></li>
+          <li><a href="#faq">Terms</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <div class="container">
+    <p class="footer__copy">© 2026 Nova. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- Back-to-top: fades in once the hero is scrolled past -->
+<button class="to-top" id="toTop" aria-label="Back to top">↑</button>
+
+<script src="js/main.js"></script>
+</body>
+</html>
